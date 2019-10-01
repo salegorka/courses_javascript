@@ -83,6 +83,8 @@ function div(a, b) {
     return a / b;
 }
 
+//Задание 6
+
 function mathOperation (a, b, oper) {
     switch (oper) {
         case "Сумма":
@@ -99,5 +101,23 @@ function mathOperation (a, b, oper) {
             break;
         default:
             return "Операция не распознана";
+    }
+}
+
+//задание 7
+
+console.log(null == 0); // Как я прочитал в учебнике для null и undefined при использовании оператора сравнения 
+                        // действует специальное правило: они равны друг другу и не равны больше ничему, поэтому результат false
+console.log(null > 0); // в данном случае null приводится к числу, получается 0 и результат false
+console.log(null >= 0); // в данном случае null также приводится к числу и получается 0, в результате true
+
+// Задание 8
+
+function power (val, pow) {
+    if (pow>1) {
+        return val*power(val, pow-1);
+    }
+    else {
+        return val;
     }
 }
