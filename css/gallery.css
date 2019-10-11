@@ -1,0 +1,47 @@
+.gal {
+    margin: 0 auto;
+    padding: 0;
+    width: 1000px;
+    border: 1px solid black;
+}
+
+.gal__main {
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.gal__button {
+    height: 30px;
+    background-color: grey;
+    border: 1px solid coral;
+    color: white;
+    border-radius: 3px;
+}
+
+.gal__button:hover {
+    color: coral;
+    background-color: white;
+}
+
+.gal__button:active {
+    color: white;
+    background-color: grey;
+}
+
+.gal__roulete {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gal__roulete-image {
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.gal__roulete-image_selected {
+    outline: 2px solid green;
+}
