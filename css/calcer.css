@@ -1,0 +1,15 @@
+.calc__keyboard td {
+    width: 30px;
+    height: 20px;
+}
+
+.calc__keyboard button {
+    width: inherit;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.calc__keyboard .calc__keyboard-btn-equal {
+    height: 60px;
+}
