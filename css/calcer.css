@@ -1,0 +1,32 @@
+
+.calc__header {
+    font: 30px "Arial";
+}
+
+.calc__display {
+    border: 2px double black;
+    min-height: 40px;
+    width: 300px;
+    margin: 2px;
+    padding: 5px;
+    font: 14px "Arial";
+    text-align: center;
+}
+
+.calc__keyboard td {
+    width: 30px;
+    height: 20px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.calc__keyboard button {
+    width: inherit;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.calc__keyboard .calc__keyboard-btn-equal {
+    height: 72px;
+}
