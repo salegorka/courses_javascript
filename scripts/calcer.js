@@ -1,6 +1,12 @@
-document.querySelector(".calc__keyboard").addEventListener("click", buttonClick);
-
+let operand = "";
+let leftOperand = "";
+let currentOper = null;
+let display = document.querySelector(".calc__display");
+let res = 0;
 let currentStep = "first";
+let suggestedNextValue = "number";
+
+document.querySelector(".calc__keyboard").addEventListener("click", buttonClick);
 
 function buttonClick (event) {
     switch (event.target.dataset["value"]){
@@ -52,38 +58,64 @@ function buttonClick (event) {
     }
 }
 
-let operand = "";
-let firstOperand = "";
-let secondOperand = "";
-let currentOper = null;
-let display = document.querySelector(".calc__display");
 
 function createOperand (digit) {
     operand += digit;
     display.innerHTML += digit;
+    suggestedNextValue = "operOrNumber";
 }
 
 function operation (op) {
-    currentStep = "second";
+    
+    if (suggestedNextValue == "operOrNumber") {
 
-    display.innerHTML += op;
-    currentOper = op;
-    firstOperand = operand;
-    operand = "";
+        if (currentStep == "second") {
+            leftOperand = mathOperation(+leftOperand, +operand, currentOper);
+            operand = "";
+
+            currentOper = op;
+            display.innerHTML += op;
+        } else {
+            leftOperand = operand;
+            currentOper= op;
+
+            operand = "";
+            currentStep = "second";
+            display.innerHTML += op;
+        }
+
+    suggestedNextValue = "Number";
+
+    } else {
+        display.innerHTML += "Ошибка: ожидается число. Начинайте заново!" + "<br>";
+        operand = "";
+        leftOperand = "";
+
+        currentStep = "first";
+    }
 }
 
 function operationEqual() {
-    currentStep = "third";
+    if (suggestedNextValue == "operOrNumber") {
 
-    secondOperand = operand;
-    operand = "";
-    let res = mathOperation(+firstOperand, +secondOperand, currentOper);
-    display.innerHTML += "=" + res;
+        res = mathOperation(+leftOperand, +operand, currentOper);
 
-    currentStep = "first";
-    firstOperand = "";
-    secondOperand = "";
-    display.innerHTML += "<br>"
+        leftOperand = "";
+        operand = "";
+        currentStep = "first";
+
+        display.innerHTML += "=" + res;
+        display.innerHTML += "<br>";
+        res = "";
+
+        suggestedNextValue = "Number";
+    } else {
+        display.innerHTML += "Ошибка: ожидается число. Начинайте заново!" + "<br>";
+        operand = "";
+        leftOperand = "";
+
+        currentStep = "first";
+    }
 }
 
 function sum(a, b) {
